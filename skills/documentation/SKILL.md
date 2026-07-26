@@ -1,0 +1,111 @@
+---
+name: documentation
+description: Unified documentation compiler, visual portal builder, report scaffolder/sanitizer, and automated lifecycle archiving engine utilizing Antigravity hooks. Supports 4 premium Stitch themes, sticky dual-view UI vs Markdown switcher, card-grids, brain file syncing, feature archiving, HTML report sanitization, and master roadmap SVG trees.
+---
+
+# Unified Documentation, Reporting & Lifecycle Sync Skill
+
+This skill provides a complete, unified documentation and reporting system for software projects. It acts as:
+1. **A Visual-First Interactive Portal Builder**: Compiles project Markdown files with 4 premium Stitch themes (`technical`, `obsidian`, `proscript`, `dynamics`).
+2. **An HTML Report Scaffolder & Sanitizer**: Scaffolds zero-markdown, high-fidelity visual HTML review reports with Outfit/Inter typography, dark/light mode toggles, and responsive first-column `nowrap` tables. Automatically sweeps HTML reports to strip trailing `&nbsp;` entities, balance container closures (`</div>`), and verify responsive CSS.
+3. **An Automated Background Lifecycle Sync Engine**: Hooked into Google Antigravity Stop Hook events to sync brain files (`task.md`, `implementation_plan.md`, `walkthrough.md`), feature archives, and master SVG roadmaps.
+
+---
+
+## 1. The Standard Document Suite & Reference Grounding Mandate
+
+Every software project maintains a standardized set of Markdown documents under `docs/`. **Core Mandate**: All document types MUST strictly adhere to the **Reference Grounding Protocol**:
+- **Inline Product Dual-Linking**: Any product, SDK, API, tool, or framework mentioned across PRDs, Specs, Architecture docs, or User Guides MUST include dual markdown links to both its **Product Landing Page** and its **Official Documentation Landing Page** (e.g., `[Google Cloud Run](https://cloud.google.com/run) ([Docs](https://cloud.google.com/run/docs))`).
+- **Knowledge Catalog Synchronization**: All reference URLs, citations, and OKF concept dependencies MUST be harvested and cross-referenced with `knowledge-catalog` bundles (`.gemini/knowledge/<SHORT_ID>/scout/references.md`).
+- **Mandatory "References & Further Reading" Section**: Every document type listed below MUST conclude with a dedicated `## 📚 References & Further Reading` section listing official product pages, doc portals, deep-dive articles, and video walkthroughs.
+
+| Document Name | Path (Markdown) | Path (HTML) | Scope & Purpose |
+| :--- | :--- | :--- | :--- |
+| **Product Requirements (PRD)** | `docs/prd_feature_doc.md` | `docs/prd_feature_doc.html` | High-level vision, target personas, product dual-links, and narrative milestones |
+| **Specifications Blueprint** | `docs/specifications.md` | `docs/specifications.html` | UX/UI constraints, layout coordinates, performance SLAs, and primary spec links |
+| **Architecture & Flows** | `docs/architecture_diagrams.md`| `docs/architecture_diagrams.html`| Flowcharts, network calls, data-relay channels, and protocol RFC links |
+| **Design System & Tokens** | `docs/design_system.md` | `docs/design_system.html` | HSL colors, font allocations, glassmorphic styles, and typography spec links |
+| **User & Demo Guide** | `docs/user_guide.md` | `docs/user_guide.html` | Setup instructions, CLI commands, troubleshooting, and doc landing page links |
+| **Walkthrough & Verification** | `docs/walkthrough.md` | `docs/walkthrough.html` | Verification test cases, screenshots, audit reports, and test harness references |
+| **Master Roadmap & Feature Tree**| `docs/master_roadmap.md` | `docs/master_roadmap.html`| Consolidated timeline with interactive SVG branching trees and milestone references |
+
+---
+
+## 2. Dynamic Visual Themes & Report Scaffolding
+
+### Visual Presentation Themes
+Markdown documents declare their visual style via YAML frontmatter (`theme`):
+
+```yaml
+---
+title: "Developer Integration Guide"
+theme: "technical" # Options: technical | obsidian | proscript | dynamics
+description: "Comprehensive step-by-step setup guides"
+---
+```
+
+1. **`technical`** (Light Mode): Crisp white (`#fbf8ff`), institutional blue (`#1A237E`), cyan (`#00E5FF`), Inter + JetBrains Mono fonts. 3-column layout.
+2. **`obsidian`** (Dark Mode): Obsidian violet canvas (`#070512`), neon-cyan (`#00f0ff`), pink gradients, glassmorphism (`backdrop-filter: blur(32px)`). Outfit + Inter fonts.
+3. **`proscript`** (Enterprise Light): Clean paper surface (`#f8f9fc`), authoritative blue (`#0f1c3f`), 12-column corporate grid, bordered sign-off tables.
+4. **`dynamics`** (Telemetry Dark): Charcoal canvas (`#0f0f10`), navy containers, status green (`#2aff2d`). Hanken Grotesk + Geist fonts.
+
+### HTML Report Scaffolder & Sanitizer Engine
+For standalone visual review reports, this skill provides built-in scaffolding and sanitization:
+- **Scaffolder**: Generates clean HTML templates with sticky dual-view UI vs Raw Markdown toggles, responsive table styling (`th:first-child { white-space: nowrap; }`), and theme controls.
+- **Sanitizer**: Sweeps reports before delivery to strip trailing `&nbsp;`, balance container tags (`<div>`), fix table text wrapping, and flag broken decorative buttons.
+
+---
+
+## 3. Automated Lifecycle Sync & Archiving Engine
+
+The skill automatically synchronizes Antigravity agent brain files on the **Stop Hook**:
+
+```
++--------------------------+
+|  Active Agent Brain      |
+|  * task.md               |
+|  * implementation_plan.md|
+|  * walkthrough.md        |
++------------+-------------+
+             |
+             |  Antigravity Stop Hook Event
+             v
++------------+-------------+
+|  Documentation Engine    |
+|  * Sync brain -> docs/   |
+|  * Archive completed     |
+|  * Rebuild master SVG    |
++------------+-------------+
+             |
+             |  Python Sub-50ms Compiler
+             v
++------------+-------------+
+|  Workspace docs/ Folder  |
+|  * Raw Markdown source   |
+|  * Premium HTML Viewers  |
++--------------------------+
+```
+
+### Automated Engine Behaviors
+1. **Brain Sync**: Automatically copies `task.md`, `implementation_plan.md`, and `walkthrough.md` from the active `.gemini/brain` directory to `docs/`.
+2. **Feature Archiving**: On milestone completion, copies active files to `docs/archive/implementation_plan_<slug>.md` and `docs/archive/task_<slug>.md`.
+3. **Master Roadmap SVG**: Auto-generates `docs/master_roadmap.html` featuring an interactive branching timeline of completed (teal), active (purple), and backlog (slate) features.
+
+---
+
+## 4. Compilation & Sanitization Commands
+
+### Manual Single File Compilation:
+```bash
+python /Users/ksprashanth/code/github/skills-documentation/skills/documentation/scripts/compile_docs.py --file docs/user_guide.md
+```
+
+### Report Sanitizer Sweep:
+```bash
+python /Users/ksprashanth/code/github/skills-documentation/skills/documentation/scripts/sanitize_report.py --file docs/walkthrough.html
+```
+
+### Full Workspace Sync & Compilation:
+```bash
+python /Users/ksprashanth/code/github/skills-documentation/skills/documentation/scripts/compile_html_docs.py
+```
